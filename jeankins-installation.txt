@@ -24,3 +24,18 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 —— info user login jenkins
 don
 Doanh@890
+
+
+-----------Data user
+user_data = <<-EOF
+       #!/bin/bash
+      ### Install Java
+      sudo amazon-linux-extras install java-openjdk11
+      ### Intsall Jenkins
+      sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+      sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+      sudo yum install -y jenkins
+      ## Start Jenkins
+      sudo systemctl start jenkins
+  EOF
+
